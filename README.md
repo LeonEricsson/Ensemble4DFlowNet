@@ -1,7 +1,7 @@
 # Ensemble4DFlowNet :jigsaw: :mag:
 
 Introducing Ensembl4DFlowNet: a implementation of the master's thesis, ["Generalized super-resolution of
-4D Flow MRI - extending capabilities using ensemble learning"](). This project offers two frameworks for ensembled 4D Flow MRI super-resolution, utilizing [4DFlowNet](https://github.com/EdwardFerdian/4DFlowNet) as the base learner architecture. The implementation is done using Tensorflow 2.6.0 with Keras, and the necessary packages are listed in the requirements file.
+4D Flow MRI - extending capabilities using ensemble learning"](). This project offers two frameworks for ensembled 4D Flow MRI super-resolution, utilizing [4DFlowNet](https://github.com/EdwardFerdian/4DFlowNet) as the base learner architecture. The implementation is done using Tensorflow 2.6.0 with Keras, and the necessary packages are listed in the [requirements](/requirements.txt) file.
 
 ## Example results :bar_chart:
 
