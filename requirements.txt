@@ -1,0 +1,8 @@
+tensorflow==2.6.1
+keras==2.6.0
+scipy
+matplotlib
+scikit-image
+vtk
+h5py
+SimpleITK
