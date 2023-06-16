@@ -106,6 +106,21 @@ To train base learners:
 ## Inference :crystal_ball:
 To run a prediction
 
-    1. Open either bagging_predictor or meta_predictor depending on the framework you use. Configure the settings.
-    2. Run the file.
+    1. If you have trained your own model proceed to step 4.
+    2. Download our pre-trained model weights from here.
+    3. Create a folder in src/models/ with the same name as your model e.g., if you downloaded the combined model you should have src/models/4DFlowNet-combined/4DFlowNet-combined-best.h5. For an ensemble you need to create a folder for each base and meta learner.
+    4. Open either bagging_predictor or meta_predictor depending on the framework you use. Configure the settings.
+    5. Run the file.
+
+## Quantification
+
+Everything used for quantitative and qualitative evaluation is present in the jupyter notebook evaluation_playground.ipynb. Certain evaluations, such as mean speed plots, relative mean error, RMSE are in a ready-to-use state but as the file suggests this is a playground file and as such certain evaluations such as the linear regression plots are less intuitive. 
+
+### VTI Conversion
+To convert h5 file to VTI:
+
+    1. Open utils/h5_to_vti.py
+    2. Configure the input directory, file name and desired output directory. 
+    3. The script expects the h5 file to contain the following datasets: u, v, w, mask
+    4. Run the file
 

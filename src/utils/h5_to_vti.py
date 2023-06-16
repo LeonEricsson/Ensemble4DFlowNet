@@ -196,12 +196,12 @@ def get_mask(input_filepath, idx):
     return mask
 
 if __name__ == "__main__":
-    input_dir = "../data/invivo/aorta"
-    output_dir = "../data/paraview_images/native"
+    input_dir = "../results/"
+    output_dir = "../data/"
 
     columns = ['u', 'v', 'w']
     
-    cases = ["P01_aorta"]   
+    cases = ["example_data_SR.h5"]   
     
     for case in cases:
         print(f"Processing case {case}")
@@ -213,7 +213,6 @@ if __name__ == "__main__":
             os.makedirs(output_path)
         print(f"Result will be saved to {output_path}")
 
-        # columns = ['mag_u','mag_v','mag_w']
         # Load HDF5
         with h5py.File(input_filepath, mode = 'r' ) as hdf5:
             data_nr = len(hdf5[columns[0]])
