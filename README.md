@@ -32,15 +32,14 @@ How to prepare training/validation dataset.
 
 The patches define our model input and output, during training we forgo the notion of the complete volume and instead treat every patch as a single training sample. During prediction however (when the entire volume is of interest), we patch and stitch the volume back together before saving the predicted output. We find that this approach improves I/O performance during training.
 
+### Isolated or Combined (non-ensemble)
+Training a non-ensemble model is straightforward and is described by Edward in the original [4DFlowNet](https://github.com/EdwardFerdian/4DFlowNet) repo. However, we've made small modifications to parameters and file names so here is a quick walk through:
 
-### Stacking
-For a stacking ensemble, the meta-learner needs to be trained in sequence of the base learners. The base learner accepts csv files while the meta-learner uses patched H5 files.
-
-To train base learners and the meta-learner:
+To train a non-ensemble 4DFlowNet model:
 
     1. Put all data files (HDF5) and CSV patch index files in the same directory (e.g. /data)
-    2. Sample the patches into buckets for each base learner using one of the approaches in stacking.ipynb. We recommend approach #3. Remember that the meta-learner needs training and validation data aswell, that the base learners have not trained on!
-    3. Open base_trainer.py and configure the data_dir and the csv filenames to train one base learner. Adjust hyperparameters
+    2. Open base_trainer.py and configure the data_dir and the csv filenames.
+    3. Adjust hyperparameters. The default values from the paper are already provided in the code.
     4. Run base_trainer.py
 
 Adjustable parameters for base_trainer.py:
@@ -63,6 +62,15 @@ Adjustable parameters for base_trainer.py:
 | nr_low_block | Number of blocks in low resolution space within 4DFlowNet. |
 | nr_hi_block | Number of blocks in high resolution space within 4DFlowNet. |
 
+### Stacking
+For a stacking ensemble, the meta-learner needs to be trained in sequence of the base learners. The base learner accepts csv files while the meta-learner uses patched H5 files.
+
+To train base learners and the meta-learner:
+
+    1. Put all data files (HDF5) and CSV patch index files in the same directory (e.g. /data)
+    2. Sample the patches into buckets for each base learner using one of the approaches in stacking.ipynb. We recommend approach #3. Remember that the meta-learner needs training and validation data aswell, that the base learners have not trained on!
+    3. Open base_trainer.py and configure the data_dir and the csv filenames to train one base learner. Adjust available hyperparameters (detailed above)
+    4. Run base_trainer.py
     5. Repeat until every base learner has been trained.
     6. Open prepare_meta_dataset.py and configure the settings.
     7. Run the file two times, first to generate the training data and then the validation data.
@@ -89,17 +97,18 @@ For a bagging ensemble, we only need to train the base learners.
 To train base learners:
 
     1. Put all data files (HDF5) and CSV patch index files in the same directory (e.g. /data)
-    3. Open base_trainer.py and configure the data_dir and the csv filenames to train one base learner. Adjust hyperparameters
+    3. Open base_trainer.py and configure the data_dir and the csv filenames to train one base learner. Adjust available hyperparameters
     4. Run base_trainer.py
-    5. Repeat until every base learner has been trained.
 
-    Additional adjustable parameters for base_trainer.py for bagging:
+Additional adjustable parameters for bagging:
 
 |Parameter  | Description   |
 |------|--------------|
 |random_sampling| Option to randomly sample instead of using all data samples |
 |sample_size_fraction| How big fraction of the original data set should be considered |
 |replacement| Option to perform the sampling process with replacement |
+
+    5. Repeat until every base learner has been trained.
 
 
 
