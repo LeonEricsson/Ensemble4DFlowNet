@@ -50,7 +50,7 @@ if __name__ == '__main__':
     upsample_mask = False
     
     # May need adjusting
-    dir = meta_model_path.split("/")[-3]
+    dir = meta_model_path.split("/")[-2]
     output_dir = f"../results/{dir}"
     
     # Params
