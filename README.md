@@ -121,9 +121,9 @@ To run a prediction
     4. Open either bagging_predictor or meta_predictor depending on the framework you use. Configure the settings.
     5. Run the file.
 
-## Quantification
+## Quantification 🔢
 
-Everything used for quantitative and qualitative evaluation is present in the jupyter notebook evaluation_playground.ipynb. Certain evaluations, such as mean speed plots, relative mean error, RMSE are in a ready-to-use state but as the file suggests this is a playground file and as such certain evaluations such as the linear regression plots are less intuitive. 
+Everything used for quantitative and qualitative evaluation is present in the jupyter notebook evaluation_playground.ipynb. Certain evaluations, such as mean speed plots, relative mean error, RMSE are in a ready-to-use state but as the file suggests this is a playground file and therefor certain evaluations are less intuitive. 
 
 ### VTI Conversion
 To convert h5 file to VTI:
