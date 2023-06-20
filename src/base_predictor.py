@@ -42,7 +42,7 @@ if __name__ == '__main__':
     # Params
     patch_size = 24
     res_increase = 2
-    batch_size = 8
+    batch_size = 32
     round_small_values = True
 
     # Architectural    

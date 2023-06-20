@@ -73,16 +73,16 @@ if __name__ == '__main__':
 
     base_model_path = "../models"
     
-    base_model_names = ["4DFlowNet-combined-1",
-                        "4DFlowNet-combined-2", 
-                        "4DFlowNet-combined-3", 
-                        "4DFlowNet-combined-4", 
-                        "4DFlowNet-combined-5", 
-                        "4DFlowNet-combined-6", 
-                        "4DFlowNet-combined-7", 
-                        "4DFlowNet-combined-8", 
-                        "4DFlowNet-combined-9", 
-                        "4DFlowNet-combined-10"]
+    base_model_names = ["4DFlowNet-bagging-1",
+                        "4DFlowNet-bagging-2", 
+                        "4DFlowNet-bagging-3", 
+                        "4DFlowNet-bagging-4", 
+                        "4DFlowNet-bagging-5", 
+                        "4DFlowNet-bagging-6", 
+                        "4DFlowNet-bagging-7", 
+                        "4DFlowNet-bagging-8", 
+                        "4DFlowNet-bagging-9", 
+                        "4DFlowNet-bagging-10"]
     
     
     output_dir = f"../results"

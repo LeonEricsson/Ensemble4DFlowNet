@@ -37,14 +37,14 @@ def load_base_model(path, i):
 if __name__ == '__main__':
     data_dir = '../data'
     
-    LR_files = ["example_LR"]
+    LR_files = ["example"]
     
     base_model_path = "../models"
     base_model_names = ["4DFlowNet-model-1",
                         "4DFlowNet-model-2",
                         "4DFlowNet-model-3"]
     
-    meta_model_path = "../meta_models/4DFlowNet-meta-best.h5"
+    meta_model_path = "../models/4DFlowNet-meta/4DFlowNet-meta-best.h5"
     
     # Subsample mask
     upsample_mask = False
