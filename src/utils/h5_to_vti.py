@@ -196,12 +196,15 @@ def get_mask(input_filepath, idx):
     return mask
 
 if __name__ == "__main__":
-    input_dir = "../results/"
-    output_dir = "../data/"
+    input_dir = "../results"
+    output_dir = "../data"
+
+    # Set if you wish to extract .vti for a specific frame as opposed to all frames.
+    frame = None
 
     columns = ['u', 'v', 'w']
     
-    cases = ["example_data_SR.h5"]   
+    cases = ["example_data_SR.h5"]  # expected to contain u,v,w and mask 
     
     for case in cases:
         print(f"Processing case {case}")
@@ -220,14 +223,15 @@ if __name__ == "__main__":
         with h5py.File(input_filepath, 'r') as hf:
             if "dx" in hf.keys():
                 dx = np.asarray(hf.get("dx"))[0]
-                # print(dx)
                 spacing = (dx[0], dx[1], dx[2])
             else:
                 spacing = (1.0, 1.0, 1.0)
         print(spacing)
 
+        frames = [frame] if frame else range(data_nr)
+
         # Build a vtk file per time frame    
-        for idx in range(0, data_nr, 1):
+        for idx in frames:
             print('Processing index', idx)
             
             u, v, w = get_vector_fields(input_filepath, columns, idx)
