@@ -46,4 +46,5 @@ env.bak/
 venv.bak/
 
 # Project specific
-
+data/*
+results/*
