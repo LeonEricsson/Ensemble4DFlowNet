@@ -16,7 +16,9 @@ Aortic arch at native resolution (3mm) super-resolved using bagging and stacking
 Two ensemble frameworks, bagging and stacking, are available for model training and prediction. For non-ensemble 4DFlowNet instructions we refer to [4DFlowNet](https://github.com/EdwardFerdian/4DFlowNet) by Edward Ferdian.
 
 ### Prepare the data
-To generate pairs of high resolution (HR) and low resolution (LR) datasets, we assume the availability of an HR CFD dataset in HDF5 format. The HR dataset should contain 3D velocity fields (u, v, w) and maximum velocity scalars (u_max, v_max, w_max). Both these quantities should be defined over time, such that u = [T, X, Y, Z] and u_max = [T, max]. Furthermore, we expect a 3D binary mask that defines the flow field regions of the data. This mask can either be static, indicated by mask = [1, X, Y, Z], or dynamic, indicated by [T, X, Y, Z]. As an example we provide /data/example_data_HR.h5
+To generate pairs of high resolution (HR) and low resolution (LR) datasets, we assume the availability of an HR CFD dataset in HDF5 format. The HR dataset should contain 3D velocity fields (u, v, w) and maximum velocity scalars (u_max, v_max, w_max). Both these quantities should be defined over time, such that u = [T, X, Y, Z] and u_max = [T, max]. Furthermore, we expect a 3D binary mask that defines the flow field regions of the data. This mask can either be static, indicated by mask = [1, X, Y, Z], or dynamic, indicated by [T, X, Y, Z]. 
+
+We provide an example dataset [here](https://kise-my.sharepoint.com/:f:/g/personal/david_marlevi_ki_se/Ek-o5tQrmqZPvDC6n2hx4soBFJRa8xWExxYfVYw_dX80bQ?email=david.marlevi%40ki.se&e=dAauTc). For convenience, place these inside a folder structure like /data/example_data_HR.h5. 
 
 How to prepare training/validation dataset.
 
@@ -113,13 +115,29 @@ Additional adjustable parameters for bagging:
 
 
 ## Inference :crystal_ball:
-To run a prediction
 
-    1. If you have trained your own model proceed to step 4.
-    2. Download our pre-trained model weights from here.
-    3. Create a folder in src/models/ with the same name as your model e.g., if you downloaded the combined model you should have src/models/4DFlowNet-combined/4DFlowNet-combined-best.h5. For an ensemble you need to create a folder for each base and meta learner.
-    4. Open either bagging_predictor or meta_predictor depending on the framework you use. Configure the settings.
-    5. Run the file.
+A set of pre-trained model weights from both baseline and ensemble models can be downloaded from [here](https://kise-my.sharepoint.com/:f:/g/personal/david_marlevi_ki_se/El1e02h1-HVAjBKaH_ZgewgB5wgWD6RANBKVeeykSDUYPA?email=david.marlevi%40ki.se&e=0EtbtT). In brief, the folders contain the following models:
+
+|Model  | Description   |
+|------|--------------|
+|4DFlowNet-aorta-best.h5 | Base network trained on only aortic data |
+|4DFlowNet-cardiac-best.h5 | Base network trained on only cardiac data |
+|4DFlowNet-cerebro-best.h5 | Base network trained on only cerebrovascular data |
+|4DFlowNet-combined-best.h5 | Base network trained on data from all domains |
+|Bagging - Architectural Blocks | Input networks for bagging across various architectures |
+|Bagging - 1-12 | Input networks for bagging across 1-12 networks with random sampling |
+|Half Subbagging - 1-12 | Input networks for half subbagging across 1-12 networks with random sampling |
+|Stacking - Architectural Blocks | Input networks for stacking across various architectures including meta learner|
+|Stacking - Compartmentalized | Input networks for stacking across compartmentalized base learners including meta learner|
+|Stacking - Central Upsampling Layer | Input networks for stacking across networks with varying upsampling layers including meta learner|
+
+To run a prediction, do the following:
+
+    1a. If you have trained your own model proceed to step 4.
+    1b. If you want to use pre-trained models, download our pre-trained model weights as per above.
+    2. Create a folder in src/models/ with the same name as your model e.g., if you downloaded the combined model you should have src/models/4DFlowNet-combined/4DFlowNet-combined-best.h5. For an ensemble you need to create a folder for each base and meta learner.
+    3. Open either bagging_predictor or meta_predictor depending on the framework you use. Configure the settings.
+    4. Run the file.
 
 ## Quantification 🔢
 
