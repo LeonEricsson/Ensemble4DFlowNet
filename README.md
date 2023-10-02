@@ -1,16 +1,29 @@
 # Ensemble4DFlowNet :jigsaw: :mag:
 
 Introducing Ensemble4DFlowNet: a implementation of the master's thesis, ["Generalized super-resolution of
-4D Flow MRI - extending capabilities using ensemble learning"](). This project offers two frameworks for ensembled 4D Flow MRI super-resolution, utilizing [4DFlowNet](https://github.com/EdwardFerdian/4DFlowNet) as the base learner architecture. The implementation is done using Tensorflow 2.6.0 with Keras, and the necessary packages are listed in the [requirements](/requirements.txt) file.
+4D Flow MRI - extending capabilities using ensemble learning"](). This project offers two frameworks for ensembled 4D Flow MRI super-resolution, utilizing [4DFlowNet](https://github.com/EdwardFerdian/4DFlowNet) as the baseline architecture. Training pipelines are implemented in Tensorflow 2.6.0 with Keras, and the necessary packages are listed in the [requirements](/requirements.txt) file.
 
 ## Example results :bar_chart:
 
-Below are example prediction results from clinical 4D Flow MRI datasets.
+**Models trained on purely synthetic data show promising potential on clinical 4D Flow MRI datasets.**
 
-Aortic arch at native resolution (3mm) super-resolved using bagging and stacking ensemble (1.5mm).
+*Aortic arch at native resolution (3mm) super-resolved using bagging and stacking ensemble (1.5mm).*
 <p align="left">
     <img src="https://i.imgur.com/vCKeloZ.png" width="500">
 </p>
+
+*Cerebral transverse sinus at native resolution (1mm) super-resolved using bagging and stacking ensemble (0.5mm).*
+<p align="left">
+    <img src="https://i.imgur.com/H2fbLU2.jpg" width="500">
+</p>
+
+**Further, we observe signs of generalization on completely unseen hemodynamical conditions**
+
+*Aortic dissection at native resolution (3mm) super-resolved (1.5mm).*
+<p align="left">
+    <img src="https://i.imgur.com/ghapDY3.jpg" width="500">
+</p>
+
 
 ## Training process :hammer:
 Two ensemble frameworks, bagging and stacking, are available for model training and prediction. For non-ensemble 4DFlowNet instructions we refer to [4DFlowNet](https://github.com/EdwardFerdian/4DFlowNet) by Edward Ferdian.
