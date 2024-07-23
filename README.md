@@ -1,6 +1,6 @@
 # Ensemble4DFlowNet :jigsaw: :mag:
 
-Introducing Ensemble4DFlowNet: a implementation of the paper, ["Generalized super-resolution 4D Flow MRI – using ensemble learning to extend across the cardiovascular system"](https://arxiv.org/abs/2311.11819). This project offers two frameworks for ensembled 4D Flow MRI super-resolution, utilizing [4DFlowNet](https://github.com/EdwardFerdian/4DFlowNet) as the baseline architecture. Training pipelines are implemented in Tensorflow 2.6.0 with Keras, and the necessary packages are listed in the [requirements](/requirements.txt) file.
+Introducing Ensemble4DFlowNet: a implementation of the paper ["Generalized super-resolution 4D Flow MRI – using ensemble learning to extend across the cardiovascular system"](https://arxiv.org/abs/2311.11819), along with reference [Supplementary Material](https://github.com/dmarlevi/Ensemble4DFlowNet/blob/main/Supplementary%20Material.pdf). This project offers two frameworks for ensembled 4D Flow MRI super-resolution, utilizing [4DFlowNet](https://github.com/EdwardFerdian/4DFlowNet) as the baseline architecture. Training pipelines are implemented in Tensorflow 2.6.0 with Keras, and the necessary packages are listed in the [requirements](/requirements.txt) file.
 
 ## Example results :bar_chart:
 
